@@ -15,6 +15,24 @@
         <li><a href="#">About Us<span class="sr-only">(current)</span></a></li>
         <li><a href="#">Shop<span class="sr-only">(current)</span></a></li>
         <li><a href="#">FAQ<span class="sr-only">(current)</span></a></li>
+
+          </li>
+            <% if current_user %>
+          <li>
+            <%= link_to current_user.email, edit_user_registration_path, class: 'white shadowed link-styling' %>
+          </li>
+          <li>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'white shadowed link-styling' %>
+          </li>
+            <% else %>
+          <li>
+            <%= link_to "Register", new_user_registration_path, class: 'white shadowed link-styling' %>
+          </li>
+          <li>
+          <%= link_to "Login", new_user_session_path, class: 'white shadowed link-styling' %>
+          </li>
+          <% end %>
+
       </ul>
     </div>
   </div>

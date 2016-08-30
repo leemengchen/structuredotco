@@ -36,6 +36,7 @@ gem 'rails_admin', '>= 1.0.0.rc'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
+gem 'bcrypt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
