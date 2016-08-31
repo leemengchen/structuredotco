@@ -33,6 +33,14 @@
           </li>
           <% end %>
 
+          <%= form_tag items_path, class: "form-inline", method: :get do %>
+  <div class="form-group">
+    <%= text_field_tag :query, params[:query], class: "form-control" %>
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% if params[:query].present? %>
+    <% link_to "clear", items_path %>
+    <% end %>
+<% end %>
       </ul>
     </div>
   </div>
