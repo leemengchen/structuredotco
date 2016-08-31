@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get :about, to: 'about#aboutpage'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  match 'auth/:provider/callback', to: 'omniauthcallbacks#create', via: [:get, :post]
+  match 'auth/:provider/callback', to: 'omniauth_callbacks#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 end

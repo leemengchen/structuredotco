@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   # You should also create an action method in this controller like this:
   def facebook
-    
+    redirect_to root_path
   end
 
   # More info at:
@@ -23,12 +23,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   protected
 
   # The path used when OmniAuth fails
-  def after_omniauth_failure_path_for(scope)
-    super(scope)
-  end
+  # def after_omniauth_failure_path_for(scope)
+  #   super(scope)
+  # end
 
-  def create
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id
-  end
+  # def create
+  #   user = User.from_omniauth(env["omniauth.auth"])
+  # end
 end
