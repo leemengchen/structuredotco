@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'landing#index'
   get :about, to: 'about#aboutpage'
+  get :items, to: 'items#index'
+  get :faq, to: 'faq#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   match 'auth/:provider/callback', to: 'omniauth_callbacks#create', via: [:get, :post]
