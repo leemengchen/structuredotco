@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'landing#index'
   get :about, to: 'about#aboutpage'
   get :items, to: 'items#index'
+  get :faq, to: 'faq#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
