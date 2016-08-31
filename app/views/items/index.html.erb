@@ -1,0 +1,11 @@
+<div class="Items Page">
+  <h1> Items list </h1>
+    <div id="items">
+      <% @items.each do |item| %>
+        <%image = item.image.url || "" %>
+        <%= image_tag image, class:"img-responsive" %>
+        <h3><%= item.title %></h3>
+        <h5><%= item.price %></h5>
+      <% end %>
+    </div>
+</div>
