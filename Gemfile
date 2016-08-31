@@ -37,7 +37,6 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'devise'
 gem 'bcrypt'
-gem 'omniauth'
 gem 'omniauth-facebook'
 
 group :development, :test do
