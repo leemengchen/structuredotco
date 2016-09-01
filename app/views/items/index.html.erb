@@ -14,11 +14,12 @@
     <div id="items">
       <!-- items = Item.search "apples" -->
       <% @items.each do |item| %>
-        puts product.name
         <%image = item.image.url || "" %>
         <%= image_tag image, class:"img-responsive" %>
         <h3><%= item.title %></h3>
+        <h5><%= item.description %></h5>
         <h5><%= item.price %></h5>
+        <%= link_to "Add To Cart", add_item_path(id: item.id), method: :post, remote: true %>
       <% end %>
     </div>
 </div>
