@@ -1,8 +1,44 @@
-<h1>Cart#show</h1>
-<p>Find me in app/views/cart/show.html.erb</p>
+<h1>Your Cart</h1>
 
-<%= @total_items %>
+<% if @items.empty? %>
+  Your Cart Is Currently Empty
+<% else %>
+<% end %>
 
-<%= JSON.parse(cookies[:cart]) %>
+<% total = 0 %>
 
-<%= puts (cookies[:cart]) %>
+<ul>
+<% @items.each do |item| %>
+  <li>
+    <%= link_to item.title, items_path %>
+    <br>
+    <%= item.description %>
+    <br>
+    <%= number_to_currency(item.price, :unit => 'RM') %>
+    <br>
+    <%= form_tag update_item_path(id: item), method: :patch do%>
+    <div class="row" >
+    <span class="small-1 large-1 columns pull-left">
+      <%= label_tag "Quantity:", nil, class: "right inline" %>
+    </span>
+    <span class="small-1 large-1 columns pull-left">
+      <%= text_field_tag :quantity, item.quantity %>
+    </span>
+    <span class="small-1 large-1 columns pull-left">
+      <%= submit_tag 'Update', class: "button" %>
+    </span>
+  </div>
+    <%end%>
+    <br>
+    <%= link_to "Remove", remove_item_path(id: item), method: :delete %>
+    <br><br>
+  </li>
+<% end %>
+
+<% if @items.empty? %>
+<% else %>
+  <!-- Order Total: <%= number_to_currency(total, :unit => 'RM') %> -->
+<% end %>
+
+<a href="#" class="button">Place Order</a>
+</ul>
