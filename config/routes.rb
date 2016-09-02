@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   
-  get 'cart/show'
+  get :'cart/show', to: "cart#show"
+  post :add_item, to: "cart#add_item"
+  delete :remove_item, to: "cart#remove_item"
+  patch :update_item, to: "cart#update_item"
 
-  get 'cart/create'
-
-  get 'cart/update'
-
-  get 'cart/destroy'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root to: 'landing#index'
