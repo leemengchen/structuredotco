@@ -7,11 +7,14 @@ class CartController < ApplicationController
     @items = []
     items.each do |k,v|
       item = Item.find_by(id: k)
-      item.define_singleton_method(:quantity) do
-        v
-      end
+      item.define_singleton_method(:quantity) {v}
+
       @items << item
     end
+
+    rescue => e
+      redirect_to items_path
+      flash[:danger] = "Your cart is empty!"
   end
 
   def add_item
@@ -19,25 +22,29 @@ class CartController < ApplicationController
       # items = { params[:id] => params[:quantity] }
       # quantity = params[:quantity].to_i
       # quantityOld = cart[params[:id]].to_i
-      # items[params[:id]] = quantityOld + quantity  
-
-
+      # items[params[:id]] = quantityOld + quantity
+      if !cookies[:cart]
+        items = { params[:id] => params[:quantity] }
+      else
     # if cookies[:cart]
-      @cart = JSON.parse(cookies[:cart])
+        items = JSON.parse(cookies[:cart])
+        items[params[:id]] = params[:quantity]
     #   else
     #     @cart = {}
     # end
+      end
+      cookies[:cart] = JSON.generate(items)
 
-    if @cart[params[:id]]
-      quantity = params[:quantity].to_i
-      quantityOld = @cart[params[:id]].to_i
-      @cart[params[:id]] = quantityOld + quantity
-      flash.now[:success] = "You've added item to cart."
- 
-    else
-      @cart[params[:id]] = params[:quantity]
-    end
-      cookies[:cart] = JSON.generate(@cart)
+    # if @cart[params[:id]]
+    #   quantity = params[:quantity].to_i
+    #   quantityOld = @cart[params[:id]].to_i
+    #   @cart[params[:id]] = quantityOld + quantity
+    #   flash.now[:success] = "You've added item to cart."
+    #
+    # else
+    #   @cart[params[:id]] = params[:quantity]
+    # end
+    #   cookies[:cart] = JSON.generate(@cart)
   end
 
   def update_item
@@ -49,7 +56,7 @@ class CartController < ApplicationController
     end
       cookies[:cart] = JSON.generate(items)
       redirect_to cart_show_path
-      flash.now[:success] = "You've updated your cart."
+      flash[:success] = "You've updated your cart."
 
   end
 
@@ -61,5 +68,5 @@ class CartController < ApplicationController
       flash.now[:danger] = "Item removed!"
 
   end
-  
+
 end
