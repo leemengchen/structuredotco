@@ -3,19 +3,33 @@ class CartController < ApplicationController
 
   def show
     items = JSON.parse(cookies[:cart])
+    @total_price = 0.0;
+
 
     @items = []
     items.each do |k,v|
+      total_item_price = 0.0;
       item = Item.find_by(id: k)
-      item.define_singleton_method(:quantity) {v}
+      if !Item.find_by(id: k)
+        flash[:danger] = "Your item is not valid!"
+        break
+      end
 
-      @items << item
+        total_item_price = item.price * v.to_f
+        @total_price += total_item_price
+
+        item.define_singleton_method(:quantity) {v}
+        item.define_singleton_method(:total) {total_item_price}
+        @items << item
+
     end
+
 
     rescue => e
       redirect_to items_path
       flash[:danger] = "Your cart is empty!"
   end
+
 
   def add_item
     # if !cookies[:cart]
@@ -65,8 +79,10 @@ class CartController < ApplicationController
       items.delete(params[:id])
       cookies[:cart] = JSON.generate(items)
       redirect_to cart_show_path
-      flash.now[:danger] = "Item removed!"
+      flash[:danger] = "Item removed!"
 
   end
+
+
 
 end
