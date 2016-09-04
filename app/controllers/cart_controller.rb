@@ -3,41 +3,62 @@ class CartController < ApplicationController
 
   def show
     items = JSON.parse(cookies[:cart])
+    @total_price = 0.0;
+
 
     @items = []
     items.each do |k,v|
+      total_item_price = 0.0;
       item = Item.find_by(id: k)
-      item.define_singleton_method(:quantity) do
-        v
+      if !Item.find_by(id: k)
+        flash[:danger] = "Your item is not valid!"
+        break
       end
-      @items << item
+
+        total_item_price = item.price * v.to_f
+        @total_price += total_item_price
+
+        item.define_singleton_method(:quantity) {v}
+        item.define_singleton_method(:total) {total_item_price}
+        @items << item
+
     end
+
+
+    rescue => e
+      redirect_to items_path
+      flash[:danger] = "Your cart is empty!"
   end
+
 
   def add_item
     # if !cookies[:cart]
       # items = { params[:id] => params[:quantity] }
       # quantity = params[:quantity].to_i
       # quantityOld = cart[params[:id]].to_i
-      # items[params[:id]] = quantityOld + quantity  
-
-
+      # items[params[:id]] = quantityOld + quantity
+      if !cookies[:cart]
+        items = { params[:id] => params[:quantity] }
+      else
     # if cookies[:cart]
-      @cart = JSON.parse(cookies[:cart])
+        items = JSON.parse(cookies[:cart])
+        items[params[:id]] = params[:quantity]
     #   else
     #     @cart = {}
     # end
+      end
+      cookies[:cart] = JSON.generate(items)
 
-    if @cart[params[:id]]
-      quantity = params[:quantity].to_i
-      quantityOld = @cart[params[:id]].to_i
-      @cart[params[:id]] = quantityOld + quantity
-      flash.now[:success] = "You've added item to cart."
- 
-    else
-      @cart[params[:id]] = params[:quantity]
-    end
-      cookies[:cart] = JSON.generate(@cart)
+    # if @cart[params[:id]]
+    #   quantity = params[:quantity].to_i
+    #   quantityOld = @cart[params[:id]].to_i
+    #   @cart[params[:id]] = quantityOld + quantity
+    #   flash.now[:success] = "You've added item to cart."
+    #
+    # else
+    #   @cart[params[:id]] = params[:quantity]
+    # end
+    #   cookies[:cart] = JSON.generate(@cart)
   end
 
   def update_item
@@ -49,7 +70,7 @@ class CartController < ApplicationController
     end
       cookies[:cart] = JSON.generate(items)
       redirect_to cart_show_path
-      flash.now[:success] = "You've updated your cart."
+      flash[:success] = "You've updated your cart."
 
   end
 
@@ -58,8 +79,10 @@ class CartController < ApplicationController
       items.delete(params[:id])
       cookies[:cart] = JSON.generate(items)
       redirect_to cart_show_path
-      flash.now[:danger] = "Item removed!"
+      flash[:danger] = "Item removed!"
 
   end
-  
+
+
+
 end

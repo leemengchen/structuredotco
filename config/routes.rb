@@ -11,8 +11,12 @@ Rails.application.routes.draw do
   delete :remove_item, to: "cart#remove_item"
   patch :update_item, to: "cart#update_item"
 
-  get :order, to: "order#new"
-  post :checkout, to: "order#checkout"
+
+  resources :orders, only: [:new, :create, :show]
+  scope '/webhooks', controller: :webhooks do
+    post 'payment_callback', to: 'webhooks#payment_callback', as: :payment_callback
+  end
+
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', omniauth_callbacks: 'users/omniauth_callbacks' }
   # devise_scope :user, only: [:destroy] do
