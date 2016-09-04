@@ -32,34 +32,32 @@ class CartController < ApplicationController
 
 
   def add_item
-    # if !cookies[:cart]
+        # if !cookies[:cart]
       # items = { params[:id] => params[:quantity] }
       # quantity = params[:quantity].to_i
       # quantityOld = cart[params[:id]].to_i
-      # items[params[:id]] = quantityOld + quantity
-      if !cookies[:cart]
-        items = { params[:id] => params[:quantity] }
-      else
+      # items[params[:id]] = quantityOld + quantity  
+
+
     # if cookies[:cart]
-        items = JSON.parse(cookies[:cart])
-        items[params[:id]] = params[:quantity]
+      @cart = JSON.parse(cookies[:cart])
     #   else
     #     @cart = {}
     # end
-      end
-      cookies[:cart] = JSON.generate(items)
 
-    # if @cart[params[:id]]
-    #   quantity = params[:quantity].to_i
-    #   quantityOld = @cart[params[:id]].to_i
-    #   @cart[params[:id]] = quantityOld + quantity
-    #   flash.now[:success] = "You've added item to cart."
-    #
-    # else
-    #   @cart[params[:id]] = params[:quantity]
-    # end
-    #   cookies[:cart] = JSON.generate(@cart)
+    if @cart[params[:id]]
+      quantity = params[:quantity].to_i
+      quantityOld = @cart[params[:id]].to_i
+      @cart[params[:id]] = quantityOld + quantity
+      flash.now[:success] = "You've added item to cart."
+ 
+    else
+      @cart[params[:id]] = params[:quantity]
+    end
+      cookies[:cart] = JSON.generate(@cart)
   end
+
+
 
   def update_item
     if !cookies[:cart]
