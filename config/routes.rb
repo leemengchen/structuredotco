@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch :update_item, to: "cart#update_item"
 
   get :order, to: "order#new"
+  post :checkout, to: "order#checkout"
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', omniauth_callbacks: 'users/omniauth_callbacks' }
   # devise_scope :user, only: [:destroy] do
