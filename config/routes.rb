@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', omniauth_callbacks: 'users/omniauth_callbacks' }
+  # scope "/admin" do
+  #   resources :users
+  # end
   # devise_scope :user, only: [:destroy] do
   #   delete 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
   # end
