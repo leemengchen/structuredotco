@@ -17,14 +17,16 @@ Rails.application.routes.draw do
     post 'payment_callback', to: 'webhooks#payment_callback', as: :payment_callback
   end
 
+  devise_for :users, controllers: 
+    { 
+      sessions: 'users/sessions', 
+      registrations: 'users/registrations', 
+      passwords: 'users/passwords', 
+      omniauth_callbacks: 'users/omniauth_callbacks' 
+    }
 
-  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords', omniauth_callbacks: 'users/omniauth_callbacks' }
-  # scope "/admin" do
-  #   resources :users
-  # end
-  # devise_scope :user, only: [:destroy] do
-  #   delete 'sign_out', :to => 'users/sessions#destroy', :as => :destroy_user_session
-  # end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  devise_scope :user do
+    get :"/auth/facebook/callback", to: redirect { |path_params, req| '/users/auth/facebook/callback' } 
+    post :"/auth/facebook/callback", to: redirect { |path_params, req| '/users/auth/facebook/callback' } 
+  end
 end

@@ -6,7 +6,7 @@ class Billplz
     body: {
       collection_id:       "qobdfigt1",
       email:                order.user.email,
-      name:                "test user",
+      name:                "your momma yo dady",
       amount:               order.total_price*100,
       callback_url:         "http://localhost:3000/webhooks/payment_callback",
       description:          "Structure.co",
