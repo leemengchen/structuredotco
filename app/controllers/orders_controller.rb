@@ -5,10 +5,10 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order =Order.create(total_price: params[:price], user_id: params[:user_id])
+    @order = Order.create(total_price: params[:cart], user_id: params[:user_id])
     if @order.save
       @bill = Billplz.create_bill_for(@order)
-      @order.update_attributes(bill_id: @bill.parsed_response['id'],bill_url: @bill.parsed_response['url'])
+      @order.update_attributes(bill_id: @bill.parsed_response['id'], bill_url: @bill.parsed_response['url'])
       redirect_to @bill.parsed_response['url']
     else
       render :new

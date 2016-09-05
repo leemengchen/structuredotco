@@ -1,5 +1,6 @@
 class CartController < ApplicationController
   respond_to :js
+  before_action :authenticate_user!
 
   def show
     items = JSON.parse(cookies[:cart])
@@ -15,7 +16,7 @@ class CartController < ApplicationController
         break
       end
 
-        total_item_price = item.price * v.to_f
+        total_item_price = item.price.to_f * v
         @total_price += total_item_price
 
         item.define_singleton_method(:quantity) {v}
@@ -39,18 +40,17 @@ class CartController < ApplicationController
       # items[params[:id]] = quantityOld + quantity  
 
 
-    # if cookies[:cart]
+    if cookies[:cart]
       @cart = JSON.parse(cookies[:cart])
-    #   else
-    #     @cart = {}
-    # end
+      else
+        @cart = {}
+    end
 
     if @cart[params[:id]]
       quantity = params[:quantity].to_i
       quantityOld = @cart[params[:id]].to_i
       @cart[params[:id]] = quantityOld + quantity
       flash.now[:success] = "You've added item to cart."
- 
     else
       @cart[params[:id]] = params[:quantity]
     end
