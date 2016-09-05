@@ -16,7 +16,7 @@ class CartController < ApplicationController
         break
       end
 
-        total_item_price = item.price * v.to_f
+        total_item_price = item.price.to_f * v
         @total_price += total_item_price
 
         item.define_singleton_method(:quantity) {v}
