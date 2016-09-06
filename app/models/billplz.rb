@@ -1,15 +1,14 @@
 class Billplz
   def self.create_bill_for(order)
-    order = order
     HTTParty.post("https://www.billplz.com/api/v3/bills".to_str,
     headers: {'Content-Type' => 'application/json', 'Accept' => 'application/json'},
     body: {
-      collection_id:       "qobdfigt1",
+      collection_id:        "qobdfigt1",
       email:                order.user.email,
-      name:                "yo grampie",
-      amount:               order.total_price,
+      name:                 "haxx0rz l337",
+      amount:               order.total_price * 100,
       callback_url:         "http://localhost:3000/webhooks/payment_callback",
-      description:          "Structure.co",
+      description:          "Structure.co shop like yo mom homie!",
       due_at:               order.due_at,
       redirect_url:         "http://localhost:3000/orders/#{order.id}",
       deliver:              "false",
@@ -23,7 +22,7 @@ class Billplz
   def self.check_status(order_id)
     order = order.find(order_id)
     url = "https://www.billplz.com/api/v3/bills/" + order.bill_id
-    arguments = {headers: {'Content-Type' => 'application/json', 'Accept' => 'application/json'},
+    arguments = { headers: {'Content-Type' => 'application/json', 'Accept' => 'application/json'},
                 basic_auth: { username: "bfad0def-ab35-42f4-b0e7-1ac130c74860:" }
               }
     HTTParty.get(url, arguments)
