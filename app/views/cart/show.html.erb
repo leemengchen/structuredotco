@@ -68,8 +68,7 @@
 <% if @items.empty? %>
 
 <% else %>
-<%= link_to "Check out here!!", orders_path(price: @total_price, user_id: current_user.id), method: :post, class: "btn btn-primary" %>
-
+<%= link_to "Check out here with BILLPLZ!!", billplz_path, method: :post, class: "btn btn-primary" %>
+<%= link_to "Check out here with Braintree!!", new_order_path, class: "btn btn-success" %>
 
 <% end %>
-
