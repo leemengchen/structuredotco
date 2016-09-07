@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
     @items = Item.all
 
     if params[:query].present?
-      @items = Item.search(params[:query])
+      @items = Item.search(
+      params[:query],fields: [:title , :description], match: :word_start)
     else
       @items = Item.all
     end
