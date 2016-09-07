@@ -1,7 +1,28 @@
-.about-row {
-  margin: 50px 50px 50px 50px;
-}
+.about-me {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5%;
 
-.about-image {
-  width: 100%;
+  .column {
+    flex: 1 0 280px;
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    &.one {
+      order: 1;
+      background-color: black;
+      color: white;
+    }
+
+    &.two {
+      order: 2;
+      background-image: asset-url("aboutprofile.jpg");
+      background-position: 0 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
 }
