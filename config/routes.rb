@@ -13,20 +13,23 @@ Rails.application.routes.draw do
 
 
   resources :orders, only: [:new, :create, :show]
+  post :braintree, to: "orders#braintree"
+  # get :braintree, to: "orders#new"
+  post :billplz, to: "orders#billplz"
   scope '/webhooks', controller: :webhooks do
     post 'payment_callback', to: 'webhooks#payment_callback', as: :payment_callback
   end
 
-  devise_for :users, controllers: 
-    { 
-      sessions: 'users/sessions', 
-      registrations: 'users/registrations', 
-      passwords: 'users/passwords', 
-      omniauth_callbacks: 'users/omniauth_callbacks' 
+  devise_for :users, controllers:
+    {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+      passwords: 'users/passwords',
+      omniauth_callbacks: 'users/omniauth_callbacks'
     }
 
   devise_scope :user do
-    get :"/auth/facebook/callback", to: redirect { |path_params, req| '/users/auth/facebook/callback' } 
-    post :"/auth/facebook/callback", to: redirect { |path_params, req| '/users/auth/facebook/callback' } 
+    get :"/auth/facebook/callback", to: redirect { |path_params, req| '/users/auth/facebook/callback' }
+    post :"/auth/facebook/callback", to: redirect { |path_params, req| '/users/auth/facebook/callback' }
   end
 end
