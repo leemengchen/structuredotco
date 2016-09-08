@@ -15,7 +15,6 @@ module CartHelper
       total_price += item.total
       items << item
     end
-
     { total_price: total_price, items: items }
   end
 

@@ -1,4 +1,3 @@
-
 <div class="modal fade-modal-lg" id="cartmodal-modal-lg">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -7,34 +6,9 @@
         <h3 class="modal-title">Your Cart</h3>
       </div>
 
-      <div class="modal-body">
-        <h5 class="text-center">Feel free to add more stuffs in your cart!</h5>
-        <div class="table table-striped" id="tblGrid">
-          <div id="tblHead">
-            <div class='row'>
-              <div class="col-md-3">Selected items</div>
-              <div class="col-md-3">Price</div>
-              <div class="col-md-3">Quantity</div>
-              <div class="col-md-3 text-right">Subtotal</div>
-            </div>
-          </div>
-          <tbody>
-            <% cart[:items].each do |item| %>
-            <%= render partial: "cart/item", locals: {item: item} %>
-            <%end%>
-          </tbody>
-        </div>
+      <div class="modal-body" id="cart-container">
+         <%= render partial: "cart/modalbody", locals: { cart: carts_hash } %>
       </div>
-      <div class=row>
-        <div class='col-md-12'>
-          <h3 style='text-align: right; font-weight: bold;'>
-            Total Price
-            
-            <br><%= number_to_currency(cart[:total_price], :unit => 'RM') %>
-          </h3>
-        </div>
-      </div>
-
       <div class="modal-footer">
         <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Check out here</button>

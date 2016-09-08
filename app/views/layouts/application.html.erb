@@ -18,9 +18,7 @@
       <%= render partial: "partials/flash_messages" %>
       <%= render partial: "users/registrations/new" %>
       <%= render partial: "users/sessions/new" %>
-      <div id="cart-container">
-        <%= render partial: "cart/show", locals: { cart: carts_hash, item: @item } %>
-      </div>
+      <%= render partial: "cart/show" %>        
     <%= yield %>
 
 
