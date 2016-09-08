@@ -14,7 +14,49 @@
 <div class="landing">
   <div class="background">
     <div class="content">
-      <h1> Welcome to The Structure Co </h1>
+      <<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <%= image_tag "slider1.jpg" %>
+        <div class="carousel-caption">
+          <h3>Welcome to Structure.co!</h3>
+        </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag "slider2.jpg" %>
+      <div class="carousel-caption">
+        <h3>YEAHHHH</h3>
+      </div>
+    </div>
+
+    <div class="item">
+      <%= image_tag "slider3.jpg" %>
+      <div class="carousel-caption ">
+        <h3>THIS IS COOL</h3>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+      </div>
     </div>
   </div>
 
@@ -27,15 +69,16 @@
 
   <div class="featured">
     <h1>FEATURED PRODUCTS</h1>
-    <%= video_tag "landingvideo.webm", autoplay: true, loop: loop %>
+      <%= video_tag "landingvideo.webm", autoplay: true, loop: loop %>
     <h3>Some button to link</h3>
-</div>
-
-<div class="row">
-  <div class="col-xs-6">
-  testing
   </div>
-  <div class="col-xs-6">
-  testing
+
+  <div class="row">
+    <div class="col-xs-6">
+      testing
+    </div>
+    <div class="col-xs-6">
+      testing
+    </div>
   </div>
 </div>

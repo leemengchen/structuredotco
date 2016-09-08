@@ -1,0 +1,2 @@
+$("#cart-container").html("<%=j render partial: 'cart/show', locals: { cart: carts_hash } %>")
+$('.cart-content[data-id=<%=@item.id%>]').remove()

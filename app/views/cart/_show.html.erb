@@ -1,0 +1,73 @@
+<div class="modal fade" id="cartmodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+      <div class= "finalcart text-center">
+        <h1> Your final shopping cart </h1>
+      </div>
+        
+        <% if cart.empty? %>
+          Your Cart Is Currently Empty
+        <% else %>
+          <div class="cart-content">
+            <table>
+              <th>Selected items</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th> Total Price</th>
+              <% cart[:items].each do |item| %>
+              <tr>
+                <td>
+                  <h2><%= item.title %></h3>
+                  <h5><%= item.description %></h5>
+                </td>
+                <td>
+                    <%= form_tag update_item_path(id: item), method: :patch do%>
+                    <div class="row" >
+                    <span class="small-1 large-1 columns pull-left">
+                      <%= label_tag "Quantity:", nil, class: "right inline" %>
+                    </span>
+                    <span class="small-1 large-1 columns pull-left">
+                      <%= text_field_tag :quantity, item.quantity %>
+                    </span>
+                    <span class="small-1 large-1 columns pull-left">
+                      <%= submit_tag 'Update your quantity', class: "btn btn-primary" %>
+                    </span>
+                    <span><%= link_to "Remove", remove_item_path(id: item), class:"btn btn-danger", method: :delete %>
+                    </span>
+                  </div>
+                    <%end%>
+                </td>
+                <td>
+                  <%= number_to_currency(item.price, :unit => 'RM') %>
+                </td>
+                <td>
+                  <%= number_to_currency(item.total, :unit => 'RM') %>
+                </td>
+              </tr>
+              <% end %>
+
+            </table>
+          </div>
+
+          <div class=row>
+            <div class='col-md-6'>
+              <h3 style='text-align: right; font-weight: bold;'>
+                Total Price
+                <br><%= number_to_currency(cart[:total_price], :unit => 'RM') %>
+              </h3>
+            </div>
+          </div>
+          <%= link_to "Check out here with BILLPLZ!!", billplz_path, method: :post, class: "btn btn-primary" %>
+          <%= link_to "Check out here with Braintree!!", new_order_path, class: "btn btn-success" %>
+        <% end %>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

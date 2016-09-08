@@ -26,20 +26,12 @@
         <% if current_user %>
           <li><%= link_to current_user.email, edit_user_registration_path, class: 'white shadowed link-styling' %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'white shadowed link-styling' %></li>
-          <li><%=link_to "Cart", cart_show_path %></li>
+          <li><div class="btn btn-success" data-toggle="modal" data-target="#cartmodal">CART</div></li>
         <% else %>
-          <!-- <li><%= link_to "Register", new_user_registration_path, class: 'white shadowed link-styling' %></li> -->
-          <li><div class="btn btn-success" data-toggle="modal" data-target="#registrationmodal">
-            REGISTER
-          </div></li>
-          <!-- <li><%= link_to "Login", new_user_session_path, class: 'white shadowed link-styling' %></li> -->
-          <li><div class="btn btn-success" data-toggle="modal" data-target="#loginmodal">
-              LOGIN
-          </div></li>
-          <li><%=link_to "Cart", cart_show_path %></li>
-          <% end %>
-
-
+          <li><div class="btn btn-success" data-toggle="modal" data-target="#registrationmodal">REGISTER</div></li>
+          <li><div class="btn btn-success" data-toggle="modal" data-target="#loginmodal">LOGIN</div></li>
+          <li><div class="btn btn-success" data-toggle="modal" data-target="#cartmodal">CART</div></li>
+        <% end %>
       </ul>
     </div>
   </div>
