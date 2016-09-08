@@ -1,17 +1,17 @@
 .landing {
 
-    .background {   
-        /*background-image: url("https://hd.unsplash.com/photo-1471623817296-aa07ae5c9f47");*/
-        background-color: aquamarine;
-        height: calc(100vh - 302px);
-        width: 100%;
-        background-position: 50% 50%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+    // .background {
+    //     /*background-image: url("https://hd.unsplash.com/photo-1471623817296-aa07ae5c9f47");*/
+    //     background-color: aquamarine;
+    //     height: calc(100vh - 302px);
+    //     width: 100%;
+    //     background-position: 50% 50%;
+    //     background-repeat: no-repeat;
+    //     background-size: cover;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    // }
 
     hr {
         display: block;
@@ -28,10 +28,24 @@
       border-bottom: 2px solid orange;
     }
 
+  .carousel-inner  {
+    max-width: auto;
+    max-height: 550px;
+    margin: auto;
+    background-color: salmon;
+  }
+
+  .carousel-caption{
+    bottom: 0px;
+    top: 20px;
+    color: black;
+
+  }
+
     @media all and (max-width: 1199px) {
         .features {
           max-width: 600px;
         }
     }
-    
+
 }
