@@ -1,2 +1,3 @@
-$("#cart-container").html("<%=j render partial: 'cart/show', locals: { cart: carts_hash } %>")
+$('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
+
 $('.cart-content[data-id=<%=@item.id%>]').remove()
