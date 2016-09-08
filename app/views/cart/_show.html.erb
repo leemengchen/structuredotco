@@ -10,7 +10,7 @@
           Your Cart Is Currently Empty
         <% else %>
 
-          <div class="cart-content" data-id="<%=@item.id%>">
+          <div class="cart-content" data-id="<%=%>">
             <table>
               <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Selected items</th>
               <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Quantity</th>
@@ -19,8 +19,9 @@
               <% cart[:items].each do |item| %>
               <tr>
                 <td>
-                  <h2><%= item.title %></h2>
-                  <%= item.description %>
+                <a tabindex="0" data-toggle="popover" data-trigger="focus" title="<%= item.description %>" data-content="<%= item.description %>"><%= item.title %></a>
+                  
+                  
                 </td>
                 <td>
                     <%= form_tag update_item_path(id: item), remote: true, method: :patch do %>
