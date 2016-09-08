@@ -16,8 +16,6 @@ class CartController < ApplicationController
       cookies[:cart] = JSON.generate(@cart)
   end
 
-
-
   def update_item
     if @cart[params[:id]]
       @cart[params[:id]] = params[:quantity]
