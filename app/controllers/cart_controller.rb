@@ -2,7 +2,7 @@ class CartController < ApplicationController
   respond_to :js
   before_action :authenticate_user!
   before_action :load_cart
-  after_action :write_cart, only: [:remove_item, :update_item]
+  # after_action :write_cart, only: [:remove_item, :update_item]
 
   def add_item
     if @cart[params[:id]]
@@ -20,12 +20,14 @@ class CartController < ApplicationController
     if @cart[params[:id]]
       @cart[params[:id]] = params[:quantity]
     end
-      flash[:success] = "You've updated your cart."
+      flash.now[:success] = "You've updated your cart."
+      cookies[:cart] = JSON.generate(@cart)
   end
 
   def remove_item
       @cart.delete params[:id]
-      flash[:danger] = "Item removed!"
+      flash.now[:danger] = "Item removed!"
+      cookies[:cart] = JSON.generate(@cart)
   end
 
   def load_cart
@@ -36,9 +38,9 @@ class CartController < ApplicationController
     end
   end
 
-  def write_cart
-    cookies[:cart] = JSON.generate(@cart)
-  end
+  # def write_cart
+  #   cookies[:cart] = JSON.generate(@cart)
+  # end
 
 
 end

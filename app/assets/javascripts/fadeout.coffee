@@ -1,14 +1,14 @@
-flashMessagesFunctions = () ->
+# flashMessagesFunctions = () ->
 
-    clearFlashMessages = () ->
-        setTimeout( () ->
-            $('.flash-messages').addClass('fadeOut')
-        , 1000)
-        setTimeout( () ->
-            $('#flash-messages-container').html("")
-        , 3000)
+#     clearFlashMessages = () ->
+#         setTimeout( () ->
+#             $('.flash-messages').addClass('fadeOut')
+#         , 500)
+#         setTimeout( () ->
+#             $('#flash-messages-container').html("")
+#         , 1000)
 
-    if $('.flash-messages').length > 0
-        clearFlashMessages()
+#     if $('.flash-messages').length > 0
+#         clearFlashMessages()
 
-$(document).on 'turbolinks:load', flashMessagesFunctions
+# $(document).on 'turbolinks:load', flashMessagesFunctions

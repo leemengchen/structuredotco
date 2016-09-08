@@ -19,7 +19,7 @@
       <%= render partial: "users/registrations/new" %>
       <%= render partial: "users/sessions/new" %>
       <div id="cart-container">
-        <%= render partial: "cart/show", locals: { cart: carts_hash } %>
+        <%= render partial: "cart/show", locals: { cart: carts_hash, item: @item } %>
       </div>
     <%= yield %>
 

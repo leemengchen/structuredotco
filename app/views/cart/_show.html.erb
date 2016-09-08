@@ -3,46 +3,37 @@
     <div class="modal-content">
       <div class="modal-body">
       <div class= "finalcart text-center">
-        <h1> Your final shopping cart </h1>
+        <h1> Your Cart</h1>
       </div>
         
         <% if cart.empty? %>
           Your Cart Is Currently Empty
         <% else %>
-          <div class="cart-content">
+
+          <div class="cart-content" data-id="<%=@item.id%>">
             <table>
-              <th>Selected items</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th> Total Price</th>
+              <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Selected items</th>
+              <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Quantity</th>
+              <!-- <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Price</th> -->
+              <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Subtotal</th>
               <% cart[:items].each do |item| %>
               <tr>
                 <td>
-                  <h2><%= item.title %></h3>
-                  <h5><%= item.description %></h5>
+                  <h2><%= item.title %></h2>
+                  <%= item.description %>
                 </td>
                 <td>
-                    <%= form_tag update_item_path(id: item), method: :patch do%>
-                    <div class="row" >
-                    <span class="small-1 large-1 columns pull-left">
-                      <%= label_tag "Quantity:", nil, class: "right inline" %>
-                    </span>
-                    <span class="small-1 large-1 columns pull-left">
-                      <%= text_field_tag :quantity, item.quantity %>
-                    </span>
-                    <span class="small-1 large-1 columns pull-left">
-                      <%= submit_tag 'Update your quantity', class: "btn btn-primary" %>
-                    </span>
-                    <span><%= link_to "Remove", remove_item_path(id: item), class:"btn btn-danger", method: :delete %>
-                    </span>
-                  </div>
+                    <%= form_tag update_item_path(id: item), remote: true, method: :patch do %>
+                    <%= text_field_tag :quantity, item.quantity %>
+                    <%= submit_tag 'Update', class: "btn btn-primary" %>
+                    <%= link_to "", remove_item_path(id: item), class: "fa fa-times btn btn-danger", remote: true, method: :delete %>
                     <%end%>
                 </td>
-                <td>
+                <!-- <td>
                   <%= number_to_currency(item.price, :unit => 'RM') %>
-                </td>
+                </td> -->
                 <td>
-                  <%= number_to_currency(item.total, :unit => 'RM') %>
+                  <%= number_to_currency(item.total, unit: 'RM') %>
                 </td>
               </tr>
               <% end %>
@@ -51,16 +42,69 @@
           </div>
 
           <div class=row>
-            <div class='col-md-6'>
+            <div class='col-md-12'>
               <h3 style='text-align: right; font-weight: bold;'>
                 Total Price
                 <br><%= number_to_currency(cart[:total_price], :unit => 'RM') %>
               </h3>
             </div>
           </div>
-          <%= link_to "Check out here with BILLPLZ!!", billplz_path, method: :post, class: "btn btn-primary" %>
-          <%= link_to "Check out here with Braintree!!", new_order_path, class: "btn btn-success" %>
+          <%= link_to "BILLPLZ", billplz_path, method: :post, class: "btn btn-primary" %>
+          <%= link_to "VISA/Mastercard", new_order_path, class: "btn btn-success" %>
         <% end %>
+
+                <!-- content section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 shop-cart-table">
+                        <table class="table shop-cart text-center">
+                            <thead>
+                                <tr>
+                                    <th class="first"></th>
+                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Product</th>
+                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Price</th>
+                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Quantity</th>
+                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Sub Total</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="product-thumbnail text-left">
+                                        <a href="shop-single-product.html"><img src="http://placehold.it/120x120" alt="" ></a>
+                                    </td>
+                                    <td class="text-left">
+                                        <a href="shop-single-product.html">Chasse Wells Italian Genuine Leather Incroyable Tote</a>
+                                        <span class="text-uppercase display-block text-small margin-two">SKU: 290397</span>
+                                        <a href="shop-single-product.html" class="text-small"><i class="fa fa-edit black-text"></i> Edit</a>
+                                    </td>
+                                    <td class="text-left">
+                                        $450
+                                    </td>
+                                    <td class="product-quantity">
+                                        <div class="select-style med-input shop-shorting shop-shorting-cart no-border-round">
+                                            <select>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal text-left">$450</td>
+                                    <td class="product-remove text-center">
+                                        <a href="javascript:void(0)"><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
