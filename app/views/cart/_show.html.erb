@@ -1,118 +1,45 @@
-<div class="modal fade" id="cartmodal">
-  <div class="modal-dialog">
+
+<div class="modal fade-modal-lg" id="cartmodal-modal-lg">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 class="modal-title">Your Cart</h3>
+      </div>
+
       <div class="modal-body">
-      <div class= "finalcart text-center">
-        <h1> Your Cart</h1>
-      </div>
-        
-        <% if cart.empty? %>
-          Your Cart Is Currently Empty
-        <% else %>
-
-          <div class="cart-content" data-id="<%=%>">
-            <table>
-              <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Selected items</th>
-              <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Quantity</th>
-              <!-- <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Price</th> -->
-              <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Subtotal</th>
-              <% cart[:items].each do |item| %>
-              <tr>
-                <td>
-                <a tabindex="0" data-toggle="popover" data-trigger="focus" title="<%= item.description %>" data-content="<%= item.description %>"><%= item.title %></a>
-                  
-                  
-                </td>
-                <td>
-                    <%= form_tag update_item_path(id: item), remote: true, method: :patch do %>
-                    <%= text_field_tag :quantity, item.quantity %>
-                    <%= submit_tag 'Update', class: "btn btn-primary" %>
-                    <%= link_to "", remove_item_path(id: item), class: "fa fa-times btn btn-danger", remote: true, method: :delete %>
-                    <%end%>
-                </td>
-                <!-- <td>
-                  <%= number_to_currency(item.price, :unit => 'RM') %>
-                </td> -->
-                <td>
-                  <%= number_to_currency(item.total, unit: 'RM') %>
-                </td>
-              </tr>
-              <% end %>
-
-            </table>
-          </div>
-
-          <div class=row>
-            <div class='col-md-12'>
-              <h3 style='text-align: right; font-weight: bold;'>
-                Total Price
-                <br><%= number_to_currency(cart[:total_price], :unit => 'RM') %>
-              </h3>
+        <h5 class="text-center">Feel free to add more stuffs in your cart!</h5>
+        <div class="table table-striped" id="tblGrid">
+          <div id="tblHead">
+            <div class='row'>
+              <div class="col-md-3">Selected items</div>
+              <div class="col-md-3">Price</div>
+              <div class="col-md-3">Quantity</div>
+              <div class="col-md-3 text-right">Subtotal</div>
             </div>
           </div>
-          <%= link_to "BILLPLZ", billplz_path, method: :post, class: "btn btn-primary" %>
-          <%= link_to "VISA/Mastercard", new_order_path, class: "btn btn-success" %>
-        <% end %>
-
-                <!-- content section -->
-        <section class="content-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 shop-cart-table">
-                        <table class="table shop-cart text-center">
-                            <thead>
-                                <tr>
-                                    <th class="first"></th>
-                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Product</th>
-                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Price</th>
-                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Quantity</th>
-                                    <th class="text-left text-uppercase font-weight-600 letter-spacing-2 text-small black-text">Sub Total</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="product-thumbnail text-left">
-                                        <a href="shop-single-product.html"><img src="http://placehold.it/120x120" alt="" ></a>
-                                    </td>
-                                    <td class="text-left">
-                                        <a href="shop-single-product.html">Chasse Wells Italian Genuine Leather Incroyable Tote</a>
-                                        <span class="text-uppercase display-block text-small margin-two">SKU: 290397</span>
-                                        <a href="shop-single-product.html" class="text-small"><i class="fa fa-edit black-text"></i> Edit</a>
-                                    </td>
-                                    <td class="text-left">
-                                        $450
-                                    </td>
-                                    <td class="product-quantity">
-                                        <div class="select-style med-input shop-shorting shop-shorting-cart no-border-round">
-                                            <select>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                            </select>
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal text-left">$450</td>
-                                    <td class="product-remove text-center">
-                                        <a href="javascript:void(0)"><i class="fa fa-times"></i></a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <tbody>
+            <% cart[:items].each do |item| %>
+            <%= render partial: "cart/item", locals: {item: item} %>
+            <%end%>
+          </tbody>
         </div>
-
       </div>
+      <div class=row>
+        <div class='col-md-12'>
+          <h3 style='text-align: right; font-weight: bold;'>
+            Total Price
+            
+            <br><%= number_to_currency(cart[:total_price], :unit => 'RM') %>
+          </h3>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Check out here</button>
+      </div>
+
     </div>
   </div>
 </div>
-

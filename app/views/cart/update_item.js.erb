@@ -1,2 +1,3 @@
 $('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
-$('.cart-content[data-id=<%=@item.id%>]').replaceWith("<%=j render partial: 'cart/show', locals: { cart: carts_hash } %>")
+// debugger
+$('.cart-item[data-id=<%= @update_item.id %>]').replaceWith("<%=j render partial: 'cart/item', locals: { item: @update_item } %>")
