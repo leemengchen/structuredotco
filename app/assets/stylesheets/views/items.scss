@@ -1,0 +1,48 @@
+.items {
+
+
+  .categories-page{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 50px auto;
+    justify-content: space-around;
+  }
+
+  .categorybox{
+    flex: 0 0 300px;
+    margin: 0 0;
+    position: relative;
+  }
+
+  .categorybox:hover .invisible-layout {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  }
+
+  .invisible-layout {
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  }
+
+  .img-responsive-category{
+    width:508px;
+    height: 400px;
+  }
+
+  .category-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: black;
+    opacity: 0.8;
+    color: white
+  }
+
+}

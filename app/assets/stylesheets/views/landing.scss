@@ -42,10 +42,55 @@
 
   }
 
+  .gridphotos-class {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+ margin: 50px auto;
+ justify-content: space-around;
+
+}
+
+.photosbox{
+  flex: 0 0 300px;
+  margin: 0 0;
+  position: relative;
+}
+
+.photosbox:hover .invisible-layout {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.invisible-layout {
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+
+.img_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: black;
+    opacity: 0.8;
+    color: white
+  }
+  .img-thumbnail {
+    height:200px;
+  }
+
     @media all and (max-width: 1199px) {
         .features {
           max-width: 600px;
         }
     }
+
+
 
 }
