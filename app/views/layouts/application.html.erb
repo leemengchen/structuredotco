@@ -18,7 +18,9 @@
       <%= render partial: "partials/flash_messages" %>
       <%= render partial: "users/registrations/new" %>
       <%= render partial: "users/sessions/new" %>
-      <%= render partial: "cart/show" %>        
+    <div class="cart-container">
+      <%= render partial: "cart/show" %>
+    </div>   
     <%= yield %>
 
 
