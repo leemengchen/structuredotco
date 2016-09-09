@@ -14,6 +14,21 @@ class OrdersController < ApplicationController
     @token = Braintree::ClientToken.generate
   end
 
+  def create
+    order = Order.new(order_params)
+    if order.save
+      if order.payment_mode == billplz
+        do billplzsss
+      elsif order.payment mode Braintree
+        do braintee
+      else
+        aometing elseesa
+      end
+    else
+      redirect_to cart
+    end
+  end
+
   def billplz
       @total_price = 0.0
       @ordertotes = JSON.parse(cookies[:cart])

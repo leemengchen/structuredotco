@@ -9,6 +9,7 @@
     </div>
   </div>
   <div>
+    <% binding.pry %>
     <% cart[:items].each do |item| %>
     <%= render partial: "cart/item", locals: {item: item} %>
     <%end%>

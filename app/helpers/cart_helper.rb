@@ -3,6 +3,7 @@ module CartHelper
   def carts_hash
     return {} unless cookies[:cart]
 
+    @order = Order.new
     cart =  JSON.parse(cookies[:cart])
     total_price = 0
     items = []
