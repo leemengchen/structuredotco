@@ -19,8 +19,10 @@
             </div>
           </div>
           <tbody>
-            <% cart[:items].each do |item| %>
-            <%= render partial: "cart/item", locals: {item: item} %>
+            <% if cart[:items] && cart[:items].length > 0 %>
+              <% cart[:items].each do |item| %>
+              <%= render partial: "cart/item", locals: {item: item} %>
+              <%end%>
             <%end%>
           </tbody>
         </div>
@@ -29,8 +31,11 @@
         <div class='col-md-12'>
           <h3 style='text-align: right; font-weight: bold;'>
             Total Price
-            
-            <br><%= number_to_currency(cart[:total_price], :unit => 'RM') %>
+
+            <br>
+            <div id="total-cart-price"> 
+              <%= number_to_currency(cart[:total_price], :unit => 'RM') %>
+            </div>
           </h3>
         </div>
       </div>

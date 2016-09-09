@@ -1,6 +1,6 @@
 class CartController < ApplicationController
   respond_to :js
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :load_cart
   # after_action :write_cart, only: [:remove_item, :update_item]
 
