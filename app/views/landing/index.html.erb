@@ -60,12 +60,42 @@
     <h3>Some button to link</h3>
   </div>
 
-  <div class="row">
-    <div class="col-xs-6">
-      testing
+  <div class="gridphotos-class">
+
+  <div class="photosbox">
+    <div class="invisible-layout">
+      <div class="img_content">
+        <%= link_to "yaya!", items_path %>
+      </div>
     </div>
-    <div class="col-xs-6">
-      testing
-    </div>
+    <%= image_tag "landing1", class: "img-responsive img-thumbnail" %>
   </div>
+  <div class="photosbox">
+    <div class="invisible-layout">
+      <div class="img_content">
+        <!-- <h3>hoho</h3> -->
+        <%= link_to "hoho", items_path %>
+      </div>
+    </div>
+    <%= image_tag "landing2", class: "img-responsive img-thumbnail"%>
+  </div>
+  <div class="photosbox">
+    <div class="invisible-layout">
+      <div class="img_content">
+        <%= link_to "haha!!!!!!!!", items_path %>
+      </div>
+    </div>
+    <%= image_tag "landing3", class: "img-responsive img-thumbnail" %>
+  </div>
+  <div class="photosbox">
+    <div class="invisible-layout">
+      <div class="img_content">
+        <%= link_to "hehehe!!", items_path %>
+      </div>
+    </div>
+    <%= image_tag "landing4", class: "img-responsive img-thumbnail" %>
+  </div>
+
+</div>
+
 </div>
