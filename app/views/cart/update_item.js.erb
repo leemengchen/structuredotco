@@ -1,5 +1,4 @@
 $('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
-// debugger
 $('.cart-item[data-id=<%= @update_item.id %>]').replaceWith("<%=j render partial: 'cart/modalbody', locals: { item: @update_item } %>")
 $('#total-cart-price').html("<%=j number_to_currency(carts_hash[:total_price], :unit => 'RM') %>")
 

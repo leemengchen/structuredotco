@@ -1,12 +1,12 @@
 <div class="row cart-item" data-id="<%= item.id %>">
   <div class="col-xs-3"><a tabindex="0" data-toggle="popover" data-trigger="focus" title="<%= item.description %>" data-content="<%= item.description %>"><%= item.title %></a></div>
   <div class="col-xs-3"><%= number_to_currency(item.price, :unit => 'RM') %></div>
-    <div class="col-xs-4"><%= form_tag update_item_path(id: item), remote: true, method: :patch do %>
+    <div class="col-xs-3"><%= form_tag update_item_path(id: item), remote: true, method: :patch do %>
       <%= text_field_tag :quantity, item.quantity, size: 5 %>
       <%= submit_tag 'Update', class: "btn btn-primary" %>
     <%end%>
     </div>
-    <div class="text-right"><%= number_to_currency(item.total, unit: 'RM') %>
+    <div class="col-xs-3 text-right"><%= number_to_currency(item.total, unit: 'RM') %>
       <%= link_to "", remove_item_path(id: item), class: "fa fa-times btn btn-danger", remote: true, method: :delete %>
     </div>
 

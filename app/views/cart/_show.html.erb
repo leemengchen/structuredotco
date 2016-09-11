@@ -7,12 +7,16 @@
       </div>
 
       <div class="modal-body" id="cart-container">
-         <%= render partial: "cart/modalbody", locals: { cart: carts_hash } %>
+         <%= render partial: "cart/modalbody", locals: { cart: carts_hash, } %>
 
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Check out here</button>
+          <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-danger pull-left">Address123</button>
+
+          <%= link_to "BILLPLZ", billplz_path, method: :post, class: "btn btn-primary" %>
+          <%= link_to "VISA/Mastercard", new_order_path, class: "btn btn-success" %>
+
       </div>
 
     </div>
