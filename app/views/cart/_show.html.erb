@@ -6,10 +6,42 @@
         <h3 class="modal-title">Your Cart</h3>
       </div>
 
-      <div class="modal-body" id="cart-container">
-         <%= render partial: "cart/modalbody", locals: { cart: carts_hash, } %>
+      <div class="modal-body">
+        <h5 class="text-center">Feel free to add more stuffs in your cart!</h5>
+        <div class="table table-striped" id="tblGrid">
+          <div id="tblHead">
+            <div class='row'>
+            <b>
+              <div class="col-xs-3">Items</div>
+              <div class="col-xs-3">Price</div>
+              <div class="col-xs-3">Quantity</div>
+              <div class="col-xs-3 text-right">Subtotal</div>
+            </b>
+            </div>
+          </div>
+          <tbody>
+            <% if @cart && cart[:items].length > 0 %>
+              <% cart[:items].each do |item| %>
+                <%= render partial: "cart/item", locals: {item: item} %>
+              <%end%>
+            <%end%>
+          </tbody>
+        </div>
+
+        <div class=row>
+          <div class='col-md-12'>
+            <h3 style='text-align: right; font-weight: bold;'>
+              Total Price
+              <br>
+              <div id="total-cart-price"> 
+                <%= number_to_currency(cart[:total_price], :unit => 'RM') %>
+              </div>
+            </h3>
+          </div>
+        </div>
 
       </div>
+
       <div class="modal-footer">
           <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
           <button type="button" class="btn btn-danger pull-left">Address123</button>
