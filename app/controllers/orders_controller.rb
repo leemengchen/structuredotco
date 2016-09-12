@@ -4,12 +4,14 @@ class OrdersController < ApplicationController
   def new
     # form url routes to braintree
     @total_price = 0.0
-    @ordertotes = JSON.parse(cookies[:cart])
-    @ordertotes.each do |k,v|
-      item = Item.find(k)
-      item_total = 0
-      item_total = item.price * v.to_f
-      @total_price += item_total
+    if cookies[:cart] != nil  
+      @ordertotes = JSON.parse(cookies[:cart])
+      @ordertotes.each do |k,v|
+        item = Item.find(k)
+        item_total = 0
+        item_total = item.price * v.to_f
+        @total_price += item_total
+      end
     end
 
     if @total_price == 0
@@ -22,13 +24,14 @@ class OrdersController < ApplicationController
 
   def billplz
     @total_price = 0.0
-
-    @ordertotes = JSON.parse(cookies[:cart])
-    @ordertotes.each do |k,v|
-      item = Item.find(k)
-      item_total = 0
-      item_total = item.price * v.to_f
-      @total_price += item_total
+    if cookies[:cart] != nil
+      @ordertotes = JSON.parse(cookies[:cart])
+      @ordertotes.each do |k,v|
+        item = Item.find(k)
+        item_total = 0
+        item_total = item.price * v.to_f
+        @total_price += item_total
+      end
     end
 
 
@@ -43,20 +46,19 @@ class OrdersController < ApplicationController
       @order.update_attributes(bill_id: @bill.parsed_response['id'], bill_url: @bill.parsed_response['url'])
 
       redirect_to @bill.parsed_response['url']
-
-
-
     end
   end
 
   def braintree
     @total_price = 0.0
-    @ordertotes = JSON.parse(cookies[:cart])
-    @ordertotes.each do |k,v|
-      item = Item.find(k)
-      item_total = 0
-      item_total = item.price * v.to_f
-      @total_price += item_total
+    if cookies[:cart] != nil
+      @ordertotes = JSON.parse(cookies[:cart])
+      @ordertotes.each do |k,v|
+        item = Item.find(k)
+        item_total = 0
+        item_total = item.price * v.to_f
+        @total_price += item_total
+      end
     end
 
     result = Braintree::Transaction.sale(
@@ -82,7 +84,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       flash[:danger] = "Fuck you"
-      redirect_to cart_show_path
+      redirect_to items_path
     end
   end
 

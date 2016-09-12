@@ -44,8 +44,8 @@
 
       <div class="modal-footer">
           <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
-          <button type="button" class="btn btn-danger pull-left">Address123</button>
-
+          <!-- <button type="button" class="btn btn-danger pull-left">More Items</button> -->
+          <%= link_to "Add Items", items_path, method: :get, class: "btn btn-danger pull-left" %>
           <%= link_to "BILLPLZ", billplz_path, method: :post, class: "btn btn-primary" %>
           <%= link_to "VISA/Mastercard", new_order_path, class: "btn btn-success" %>
 
