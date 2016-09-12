@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
       end
     end
 
-    if @total_price == 0
+    if @total_price == 0 || cookies[:cart] == nil
       flash[:danger] = "Your cart is empty!"
       redirect_to items_path
     end
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
     @order = Order.create(total_price: @total_price, user_id: current_user.id)
 
-    if @total_price == 0
+    if @total_price == 0 || cookies[:cart] == nil
       flash[:danger] = "Your cart is empty!"
       redirect_to items_path
 
