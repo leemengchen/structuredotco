@@ -5,10 +5,10 @@ class Billplz
     body: {
       collection_id:        "qobdfigt1",
       email:                order.user.email,
-      name:                 "haxx0rz l337",
+      name:                 "Karl Weezer",
       amount:               order.total_price * 100,
       callback_url:         "http://localhost:3000/webhooks/payment_callback",
-      description:          "Structure.co shop like yo mom homie!",
+      description:          "Structure.co: shop like yo mom homie! Like there's no tomorrow.",
       due_at:               order.due_at,
       redirect_url:         "http://localhost:3000/orders/#{order.id}",
       deliver:              "false",

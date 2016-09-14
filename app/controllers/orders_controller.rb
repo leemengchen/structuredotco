@@ -80,10 +80,10 @@ class OrdersController < ApplicationController
       # @items.each { |item| order.ordered_items.create(item_id: item.id)}
       cookies.delete(:cart)
 
-      flash[:success] = "We've received payment for your order. We'll ship shortly!!!"
+      flash[:success] = "We've received payment for your order. We'll ship shortly!"
       redirect_to root_path
     else
-      flash[:danger] = "Fuck you"
+      flash[:danger] = "There was a problem with your order transaction. Please try again."
       redirect_to items_path
     end
   end

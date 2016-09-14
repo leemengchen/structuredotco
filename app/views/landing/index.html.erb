@@ -3,46 +3,46 @@
     <div class="content">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <%= image_tag "slider1.jpg" %>
-        <div class="carousel-caption">
-          <h3>Welcome to Structure.co!</h3>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <%= image_tag "slider1.jpg" %>
+              <div class="carousel-caption">
+                <h3>Welcome to Structure.co!</h3>
+              </div>
+          </div>
+
+          <div class="item">
+            <%= image_tag "slider2.jpg" %>
+            <div class="carousel-caption">
+              <h3>Link to Item Category like Drinks & Beverages</h3>
+            </div>
+          </div>
+
+          <div class="item">
+            <%= image_tag "slider3.jpg" %>
+            <div class="carousel-caption ">
+              <h3>Link to Seafood TOGGLE ACCORDION PANEL ACCORDINGLY FIX THAT</h3>
+            </div>
+          </div>
         </div>
-    </div>
 
-    <div class="item">
-      <%= image_tag "slider2.jpg" %>
-      <div class="carousel-caption">
-        <h3>YEAHHHH</h3>
-      </div>
-    </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
 
-    <div class="item">
-      <%= image_tag "slider3.jpg" %>
-      <div class="carousel-caption ">
-        <h3>THIS IS COOL</h3>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
       </div>
     </div>
   </div>
@@ -52,50 +52,52 @@
     <br>
     <h5>Being successful isn't about being perfect. It's about having the right tools. And, no matter what your goals, if you like to use pen and paper, then we have you covered.</h5>
 
-  <hr>
+    <hr>
 
-  <div class="featured">
-    <h1>FEATURED PRODUCTS</h1>
-      <%= video_tag "landingvideo.webm", autoplay: true, loop: loop %>
-    <h3>Some button to link</h3>
-  </div>
+    <div class="featured">
+      <h1>FEATURED PRODUCTS</h1>
+        <%= video_tag "landingvideo.webm", autoplay: true, loop: loop %>
+      <h3>Some button to link</h3>
+    </div>
 
-  <div class="gridphotos-class">
+    <div class="gridphotos-class">
+      <div class="photosbox">
+        <div class="invisible-layout">
+          <div class="img_content">
+            <%= link_to "SEAFOOD", items_path %>
+          </div>
+        </div>
+        <%= image_tag "landing1", class: "img-responsive img-thumbnail" %>
+      </div>
 
-  <div class="photosbox">
-    <div class="invisible-layout">
-      <div class="img_content">
-        <%= link_to "yaya!", items_path %>
+      <div class="photosbox">
+        <div class="invisible-layout">
+          <div class="img_content">
+            <!-- <h3>hoho</h3> -->
+            <%= link_to "hoho", items_path %>
+          </div>
+        </div>
+        <%= image_tag "landing2", class: "img-responsive img-thumbnail"%>
+      </div>
+
+      <div class="photosbox">
+        <div class="invisible-layout">
+          <div class="img_content">
+            <%= link_to "haha!!!!!!!!", items_path %>
+          </div>
+        </div>
+        <%= image_tag "landing3", class: "img-responsive img-thumbnail" %>
+      </div>
+
+      <div class="photosbox">
+        <div class="invisible-layout">
+          <div class="img_content">
+            <%= link_to "hehehe!!", items_path %>
+          </div>
+        </div>
+        <%= image_tag "landing4", class: "img-responsive img-thumbnail" %>
       </div>
     </div>
-    <%= image_tag "landing1", class: "img-responsive img-thumbnail" %>
   </div>
-  <div class="photosbox">
-    <div class="invisible-layout">
-      <div class="img_content">
-        <!-- <h3>hoho</h3> -->
-        <%= link_to "hoho", items_path %>
-      </div>
-    </div>
-    <%= image_tag "landing2", class: "img-responsive img-thumbnail"%>
-  </div>
-  <div class="photosbox">
-    <div class="invisible-layout">
-      <div class="img_content">
-        <%= link_to "haha!!!!!!!!", items_path %>
-      </div>
-    </div>
-    <%= image_tag "landing3", class: "img-responsive img-thumbnail" %>
-  </div>
-  <div class="photosbox">
-    <div class="invisible-layout">
-      <div class="img_content">
-        <%= link_to "hehehe!!", items_path %>
-      </div>
-    </div>
-    <%= image_tag "landing4", class: "img-responsive img-thumbnail" %>
-  </div>
-
-</div>
 
 </div>

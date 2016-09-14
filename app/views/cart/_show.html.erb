@@ -7,7 +7,8 @@
       </div>
 
       <div class="modal-body">
-        <h5 class="text-center">Feel free to add more stuffs in your cart!</h5>
+        <h5 class="text-center">Hit the <b>SHOP</b> button to add more items to your cart!</h5>
+        <br>
         <div class="table table-striped" id="tblGrid">
           <div id="tblHead">
             <div class='row'>
@@ -45,9 +46,9 @@
       <div class="modal-footer">
           <!-- <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button> -->
           <!-- <button type="button" class="btn btn-danger pull-left">More Items</button> -->
-          <%= link_to "Add Items", items_path, method: :get, class: "btn btn-danger pull-left" %>
+          <%= link_to "Shop", items_path, method: :get, class: "btn btn-danger pull-left" %>
           <%= link_to "BILLPLZ", billplz_path, method: :post, class: "btn btn-primary" %>
-          <%= link_to "VISA/Mastercard", new_order_path, class: "btn btn-success" %>
+          <%= link_to "VISA/Master", new_order_path, class: "btn btn-success" %>
 
       </div>
 
