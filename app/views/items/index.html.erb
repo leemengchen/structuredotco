@@ -1,42 +1,18 @@
 <div class="panel-group" id="accordion">
-  <div class="faqHeader">Shop Categories</div>
 
     <div class="panel panel-default">
       <div class="panel-heading">
+        <%= image_tag "category1.jpg", class:"img-circle img-responsive" %>
         <h4 class="panel-title">
-          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Drinks</a>
-        </h4>
-      </div>
-      <div id="collapseOne" class="panel-collapse collapse">
-        <div class="panel-body">
-          <div class="col-xs-3">
-            <% @items.each do |item| %>
-              <% if item.category_id == 3 %>
-              <%image = item.image.url || "" %>
-              <%= image_tag "slider2.jpg", class:"img-responsive" %>
-              <h3><%= item.title %></h3>
-              <h5><%= item.description %></h5>
-              <h5>RM<%= item.price %></h5>
-              <%= link_to "Add To Cart", add_item_path(id: item, quantity: 1), method: :post, remote: true %>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Seafood</a>
+          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Home Accessories</a>
         </h4>
       </div>
       <div id="collapseFour" class="panel-collapse collapse">
-        <div class="panel-body">
+        <div class="panel-body text-center">
           <% @items.each do |item| %>
-            <% if item.category_id == 4 %>
+            <% if item.category_id == 1 %>
             <%image = item.image.url || "" %>
-            <%= image_tag image, class:"img-responsive" %>
+            <%= image_tag image, class:"img-responsive", width:"350px", height:"350px" %>
             <h4><%= item.title %></h4>
             <%= item.description %>
             <h5>RM<%= item.price %></h5>
@@ -49,16 +25,17 @@
 
     <div class="panel panel-default">
       <div class="panel-heading">
+        <%= image_tag "category2.jpg", class:"img-circle img-responsive" %>
         <h4 class="panel-title">
           <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven">Arts & Craft</a>
         </h4>
       </div>
       <div id="collapseSeven" class="panel-collapse collapse">
-        <div class="panel-body">
+        <div class="panel-body text-center">
           <% @items.each do |item| %>
-            <% if item.category_id == 3 %>
+            <% if item.category_id == 2 %>
             <%image = item.image.url || "" %>
-            <%= image_tag "slider2.jpg", class:"img-responsive" %>
+            <%= image_tag image, class:"img-responsive", width:"200px", height:"200px" %>
             <h3><%= item.title %></h3>
             <h5><%= item.description %></h5>
             <h5>RM<%= item.price %></h5>
@@ -69,60 +46,4 @@
       </div>
     </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4 class="panel-title">
-          <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTen">Weapons of Mass Distraction</a>
-        </h4>
-      </div>
-      <div id="collapseTen" class="panel-collapse collapse">
-        <div class="panel-body">
-          <% @items.each do |item| %>
-            <% if item.category_id == 3 %>
-            <%image = item.image.url || "" %>
-            <%= image_tag image, class:"img-responsive" %>
-            <h3><%= item.title %></h3>
-            <h5><%= item.description %></h5>
-            <h5>RM<%= item.price %></h5>
-            <%= link_to "Add To Cart", add_item_path(id: item, quantity: 1), method: :post, remote: true %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
-</div>
-
-<div class="ItemsPage">
-  <div class="item-head text-center">
-    <h1>Items List</h1>
-  </div>
-  <div id="items">
-    <div class="text">
-      <% @items.each do |item| %>
-        <%image = item.image.url || "" %>
-        <%= image_tag "", class:"img-responsive" %>
-        <h3><%= item.title %></h3>
-        <h5><%= item.description %></h5>
-        <h5><%= item.price %></h5>
-        <%= link_to "Add To Cart", add_item_path(id: item, quantity: 1), method: :post, remote: true %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="items">
-  <div class="categories-page">
-    <% @categories.each do |category| %>
-      <div class="categorybox ">
-        <div class="invisible-layout">
-          <div class="category-text">
-            <h3><%= category.title %></h3>
-          </div>
-        </div>
-      <%image = category.image.url || "" %>
-      <%= image_tag image, class:"img-responsive-category" %>
-      </div>
-    <% end %>
-  </div>
-</div>
