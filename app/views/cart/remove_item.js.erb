@@ -1,2 +1,3 @@
 $('#flash-messages-container').html("<%=j render partial: 'partials/flash_messages' %>")
 $('.cart-item[data-id=<%=@deletable_item%>]').remove()
+$('#total-cart-price').html("<%= number_to_currency(carts_hash[:total_price], :unit => 'RM') %>")

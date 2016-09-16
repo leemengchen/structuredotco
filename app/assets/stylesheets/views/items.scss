@@ -1,0 +1,80 @@
+.items {
+
+
+  .categories-page{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 50px auto;
+    justify-content: space-around;
+  }
+
+  .categorybox{
+    flex: 0 0 300px;
+    margin: 0 0;
+    position: relative;
+  }
+
+  .categorybox:hover .invisible-layout {
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  }
+
+  .invisible-layout {
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  }
+
+  .img-responsive-category{
+    width:508px;
+    height: 400px;
+  }
+
+  .category-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: black;
+    opacity: 0.8;
+    color: white
+  }
+
+}
+
+/*extra css */
+
+.faqHeader {
+    font-size: 27px;
+    margin: 20px;
+}
+
+.panel-heading [data-toggle="collapse"]:after {
+    font-family: 'Glyphicons Halflings';
+    content:''; /* "play" icon */
+    float: right;
+    color: #F58723;
+    font-size: 18px;
+    line-height: 22px;
+    /* rotate "play" icon from > (right arrow) to down arrow */
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.panel-heading [data-toggle="collapse"].collapsed:after {
+    /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    color: #454444;
+}

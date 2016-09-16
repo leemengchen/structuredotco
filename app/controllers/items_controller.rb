@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
 
   def index
+    @categories = Category.all
+
     @items = Item.all
 
     if params[:query].present?

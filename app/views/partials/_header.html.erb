@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="header-dropdown">
       <ul class="nav navbar-nav navbar-right">
         <li><%= form_tag items_path, class: "form-inline", method: :get do %>
-            <%= text_field_tag :query, params[:query], class: "form-control" %>
+            <%= text_field_tag :query, params[:query], class: "form-control", size: '15px' %>
             <%= submit_tag "Search", class: "btn btn-primary" %>
             <% if params[:query].present? %>
             <% link_to "clear", items_path %>
@@ -26,11 +26,11 @@
         <% if current_user %>
           <li><%= link_to current_user.email, edit_user_registration_path, class: 'white shadowed link-styling' %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'white shadowed link-styling' %></li>
-          <li><div class="btn btn-success" data-toggle="modal" data-target="#cartmodal-modal-lg">CART</div></li>
+          <li><div class="btn btn-success" data-toggle="modal" data-target="#cartmodal-modal-lg">Cart</div></li>
         <% else %>
-          <li><div class="btn btn-success" data-toggle="modal" data-target="#registrationmodal">REGISTER</div></li>
-          <li><div class="btn btn-success" data-toggle="modal" data-target="#loginmodal">LOGIN</div></li>
-          <li><div class="btn btn-success" data-toggle="modal" data-target="#cartmodal-modal-lg">CART</div></li>
+          <li><div class="btn btn-default" data-toggle="modal" data-target="#registrationmodal">Register</div></li>
+          <li><div class="btn btn-default" data-toggle="modal" data-target="#loginmodal">Login</div></li>
+          <li><div class="btn btn-success" data-toggle="modal" data-target="#cartmodal-modal-lg">Cart</div></li>
         <% end %>
       </ul>
     </div>
