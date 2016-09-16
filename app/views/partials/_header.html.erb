@@ -20,9 +20,7 @@
             <% end %>
             <% end %>
         </li>
-        <li><a href="/about">About Us<span class="sr-only">(current)</span></a></li>
         <li><a href="/items">Shop<span class="sr-only"> (current)</span></a></li>
-        <li><a href="/faq">FAQ<span class="sr-only">(current)</span></a></li>
         <% if current_user %>
           <li><%= link_to current_user.email, edit_user_registration_path, class: 'white shadowed link-styling' %></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'white shadowed link-styling' %></li>
