@@ -44,8 +44,20 @@ class OrdersController < ApplicationController
     elsif @order.save && @ordertotes != nil
       @bill = Billplz.create_bill_for(@order)
       @order.update_attributes(bill_id: @bill.parsed_response['id'], bill_url: @bill.parsed_response['url'])
+      
+      # if cookies.permanent.encrypted.signed[:cart]
+      #   contents = JSON.parse(cookies.permanent.encrypted.signed[:cart])
+      #   contents.each do |product_id, quantity|
+      #     @oi = OrderedItem.new
+      #     @oi.order_id = @order.id
+      #     @oi.item_id = product_id
+      #     @oi.quantity = quantity
+      #     @oi.save
+      #   end
+      # end
 
       redirect_to @bill.parsed_response['url']
+      cookies.delete(:cart)
     end
   end
 

@@ -11,10 +11,10 @@ class CartController < ApplicationController
       quantity = params[:quantity].to_i
       quantityOld = @cart[params[:id]].to_i
       @cart[params[:id]] = quantityOld + quantity
-      flash.now[:success] = "You've added item to cart."
     else
       @cart[params[:id]] = params[:quantity]
     end
+    flash.now[:success] = "You've added item to cart."
     cookies[:cart] = JSON.generate(@cart)
   end
 
